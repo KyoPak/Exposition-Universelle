@@ -46,6 +46,11 @@
 - 메인 화면 Landscape Mode 제한
 - Dynamic Types를 통해 텍스트 접근성 향상
 
+### Personal Code Refactoring
+- POP 적용
+   - `Protocol` 채택한 클래스면 `Identifier` 부여될 수 있게끔 수정 (11.03)
+   
+
 ## 🌲 파일 트리
 
 ```
