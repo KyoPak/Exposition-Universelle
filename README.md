@@ -127,8 +127,21 @@ TextView대신 Label을 사용하여 일단 문제를 해결해 주었지만, �
     - UINavigation Controller에 마지막으로 push할 경우 topViewController와 동일합니다.
     - 마지막으로 UIViewController에 대해 설명하는 경우 표시된 ViewController와 동일합니다.
 
+---
+## Personal Code Refactoring
 
-    
+#### 1. DecodeManager Generic 구현 
+- 해당 Decode관련 코드들을 Generic화 하였습니다. 
+- 여러 타입이 추후에 생길 수 도 있다는 가정하에 여러 Type을 지원하기 위함입니다. 
+- `fetchData(name:)` 메서드와 `fetchDataList(name:)` 함수 하나로 합치려고 시도를 했었습니다. 하지만 Data의 틀이 단일 데이터 형태와, 리스트 형태의 데이터였기 때문에 구분하는게 더 맞다고 판단이 들어구분하였습니다.
+
+#### 2. POP를 사용한 Identifier 생성
+- 사실 POP를 사용하지 않고 Identifier가 필요한 class에 `String.init(..)`을 사용해도 괜찮았지만 POP 학습 후 적용할 수 있는 부분에 적용을 해보고 싶었습니다..
+- 해당 프로토콜의  `Default Implemention`을 하여 프로토콜을 채택한 class에 자동으로 Identifier을 호출하여 사용할 수 있게끔 하였습니다.
+- 사용하면서 POP로 유지보수성, 확장성이 높아진다고 생각이 들었습니다. 하지만 이러한 작은 기능 단위의 프로토콜이 많아질 경우에는 오히려 관리가 어려울 수도 있다는 생각도 들었습니다.
+- 때문에 POP를 사용할 때, 어느정도로 기능을 분리할 것인지를 면밀하게 생각할 필요가 있다고 느꼈습니다.
+
+
 ## 📚 참고 링크
 [NumberFormatter](https://developer.apple.com/documentation/foundation/numberformatter)<br>[오토레이아웃 정복하기 - 야곰닷넷](https://yagom.net/courses/autolayout/)
 [Easier Scrolling With Layout Guides](https://useyourloaf.com/blog/easier-scrolling-with-layout-guides/)<br>[Filling a Table with Data](https://developer.apple.com/documentation/uikit/views_and_controls/table_views/filling_a_table_with_data)<br>[Configuring the Cells for Your Table](https://developer.apple.com/documentation/uikit/views_and_controls/table_views/configuring_the_cells_for_your_table)<br>[JSON](https://ko.wikipedia.org/wiki/JSON)<br>[JSONDecoder](https://developer.apple.com/documentation/foundation/jsondecoder)<br>[DynamicType](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically)
