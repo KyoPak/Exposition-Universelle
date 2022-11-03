@@ -9,8 +9,6 @@ import UIKit
 
 final class KoreaItemTableViewCell: UITableViewCell {
     
-    static let cellIdentifier = String.init(describing: KoreaItemTableViewCell.self)
-    
     private enum Constant {
         static let mainImageViewleadingConstraint: CGFloat = 20
         static let mainImageViewWidth: CGFloat = 100
@@ -84,4 +82,8 @@ extension KoreaItemTableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Constant.stackViewBottomConstraint),
         ])
     }
+}
+
+extension KoreaItemTableViewCell: UseIdentifier {
+    
 }

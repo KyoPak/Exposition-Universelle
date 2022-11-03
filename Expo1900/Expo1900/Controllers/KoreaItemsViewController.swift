@@ -9,8 +9,6 @@ import UIKit
 
 final class KoreaItemsViewController: UIViewController {
     
-    static let koreaItemsVCIdentifier = String.init(describing: KoreaItemsViewController.self)
-    
     enum Constant {
         static let koreaItemsNavigationTitle = "한국의 출품작"
         static let navigationBackButtonTitle = "출품작"
@@ -83,7 +81,7 @@ extension KoreaItemsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: KoreaItemTableViewCell.cellIdentifier) as? KoreaItemTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: KoreaItemTableViewCell.reuseIdentifier) as? KoreaItemTableViewCell else {
             let errorCell = UITableViewCell()
             errorCell.textLabel?.text = "Error"
             return errorCell
@@ -95,4 +93,8 @@ extension KoreaItemsViewController: UITableViewDataSource {
 
         return cell
     }
+}
+
+extension KoreaItemsViewController: UseIdentifier {
+    
 }
