@@ -48,7 +48,9 @@
 
 ### Personal Code Refactoring
 - POP 적용
-   - `Protocol` 채택한 클래스면 `Identifier` 부여될 수 있게끔 수정 (11.03)
+  - `Protocol` 채택한 클래스면 `Identifier` 부여될 수 있게끔 수정 (11.03)
+- ScrollView 오토레이아웃 수정
+  - ScrollView 오토레이아웃 관련 ContentLayoutGuide, FrameLayoutGuide 명시적으로 표기 
    
 
 ## 🌲 파일 트리
