@@ -8,7 +8,6 @@
 import UIKit
 
 final class KoreaItemsViewController: UIViewController {
-    
     enum Constant {
         static let koreaItemsNavigationTitle = "한국의 출품작"
         static let navigationBackButtonTitle = "출품작"
@@ -64,8 +63,12 @@ final class KoreaItemsViewController: UIViewController {
     }
     
     private func popErrorAlert(error: DataError) {
-        let alert = UIAlertController(title: error.localizedDescription, message: error.failureReason, preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let alert = UIAlertController(title: error.localizedDescription,
+                                      message: error.failureReason,
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인",
+                                    style: .default,
+                                    handler: nil)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
     }
@@ -79,10 +82,14 @@ extension KoreaItemsViewController {
         koreanItemsTable.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            koreanItemsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .zero),
-            koreanItemsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .zero),
-            koreanItemsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .zero),
-            koreanItemsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: .zero)
+            koreanItemsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                  constant: .zero),
+            koreanItemsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                      constant: .zero),
+            koreanItemsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                       constant: .zero),
+            koreanItemsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                                     constant: .zero)
         ])
     }
 }

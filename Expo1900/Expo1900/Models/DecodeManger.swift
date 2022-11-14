@@ -8,7 +8,6 @@
 import UIKit
 
 struct DecodeManger<T: Decodable> {
-    
     private let decoder = JSONDecoder()
     
     func fetchData(name: String) throws -> T? {
