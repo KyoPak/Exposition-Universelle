@@ -141,47 +141,6 @@
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="97.767857142857139"/>
         </scene>
-        <!--Korea Items View Controller-->
-        <scene sceneID="Oai-9i-Kwo">
-            <objects>
-                <viewController storyboardIdentifier="KoreaItemsViewController" id="qQj-Dn-cIb" customClass="KoreaItemsViewController" customModule="Expo1900" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pDX-xb-dzi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sX6-fD-5XJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="KoreaItemTableViewCell" rowHeight="145" id="fn9-zW-TxE" customClass="KoreaItemTableViewCell" customModule="Expo1900" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="145"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fn9-zW-TxE" id="zVy-bi-5gB">
-                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="145"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="qf4-zt-X4c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qf4-zt-X4c" firstAttribute="bottom" secondItem="sX6-fD-5XJ" secondAttribute="bottom" id="Ckp-Wb-avH"/>
-                            <constraint firstItem="qf4-zt-X4c" firstAttribute="trailing" secondItem="sX6-fD-5XJ" secondAttribute="trailing" id="RhO-Yy-rsq"/>
-                            <constraint firstItem="sX6-fD-5XJ" firstAttribute="top" secondItem="qf4-zt-X4c" secondAttribute="top" id="Wz6-VI-L4c"/>
-                            <constraint firstItem="sX6-fD-5XJ" firstAttribute="leading" secondItem="qf4-zt-X4c" secondAttribute="leading" id="feH-BH-6HN"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="koreanItemsTable" destination="sX6-fD-5XJ" id="01M-Zw-7yq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bq9-fp-B4r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1965.217391304348" y="97.767857142857139"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YSj-4j-J6h">
             <objects>

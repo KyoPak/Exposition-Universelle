@@ -14,22 +14,23 @@ final class KoreaItemsViewController: UIViewController {
         static let navigationBackButtonTitle = "출품작"
     }
 
-    @IBOutlet private weak var koreanItemsTable: UITableView!
+    private var koreanItemsTable =  UITableView()
     private let dataManager: DecodeManger = DecodeManger<KoreaItem>()
     private var koreaItems: [KoreaItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
+        setupData()
         setupNavigationBar()
-        setTableView()
+        setupTableView()
+        setupTableViewConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    private func setData() {
+    private func setupData() {
         do {
             koreaItems = try dataManager.fetchDataList(name: AssetName.koreaItemJSON)
         } catch {
@@ -47,9 +48,11 @@ final class KoreaItemsViewController: UIViewController {
         }
     }
     
-    private func setTableView() {
+    private func setupTableView() {
         koreanItemsTable.delegate = self
         koreanItemsTable.dataSource = self
+        koreanItemsTable.register(KoreaItemTableViewCell.self,
+                                  forCellReuseIdentifier: KoreaItemTableViewCell.reuseIdentifier)
     }
     
     private func setupNavigationBar() {
@@ -68,6 +71,23 @@ final class KoreaItemsViewController: UIViewController {
     }
 }
 
+// MARK: - TableView Constraint
+extension KoreaItemsViewController {
+    func setupTableViewConstraints() {
+        view.addSubview(koreanItemsTable)
+        view.backgroundColor = .white
+        koreanItemsTable.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            koreanItemsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .zero),
+            koreanItemsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .zero),
+            koreanItemsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .zero),
+            koreanItemsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: .zero)
+        ])
+    }
+}
+
+// MARK: - TableView Delegate
 extension KoreaItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = DetailViewController(koreaItem: koreaItems[indexPath.row])
@@ -75,6 +95,7 @@ extension KoreaItemsViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - TableView DataSource
 extension KoreaItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return koreaItems.count
@@ -95,6 +116,7 @@ extension KoreaItemsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - KoreaItemViewController Identifier
 extension KoreaItemsViewController: UseIdentifier {
     
 }
