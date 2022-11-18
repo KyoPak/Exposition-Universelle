@@ -8,7 +8,7 @@
 import UIKit
 
 final class KoreaItemsViewController: UIViewController {
-    enum Constant {
+    private enum Constant {
         static let koreaItemsNavigationTitle = "한국의 출품작"
         static let navigationBackButtonTitle = "출품작"
     }

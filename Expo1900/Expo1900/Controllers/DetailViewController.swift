@@ -7,16 +7,14 @@
 
 import UIKit
 
+protocol DetailViewDelegate {
+    func setupDataImageView(imageView: UIImageView, label: UILabel)
+}
+
 final class DetailViewController: UIViewController {
-    private enum Constant {
-        static let imageViewTopConstraint: CGFloat = 20
-        static let imageViewHeight: CGFloat = 150
-        static let textViewTopConstraint: CGFloat = 10
-        static let textViewLeadingConstraint: CGFloat = 10
-        static let textViewTrailingConstraint: CGFloat = -10
-    }
-    
     private let koreaItem: KoreaItem?
+    
+    let detailView = DetailView()
     
     init(koreaItem: KoreaItem?) {
         self.koreaItem = koreaItem
@@ -27,56 +25,14 @@ final class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private let itemImageView: UIImageView = {
-        let itemImageView = UIImageView()
-        itemImageView.contentMode = .scaleAspectFit
-        itemImageView.translatesAutoresizingMaskIntoConstraints = false
-        return itemImageView
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let textLabel = UILabel()
-        textLabel.numberOfLines = 0
-        textLabel.textColor = UIColor.black
-        textLabel.lineBreakMode = .byWordWrapping
-        textLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        textLabel.adjustsFontForContentSizeCategory = true
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        return textLabel
-    }()
-    
-    private let stackView: UIStackView = {
-        let contentView = UIStackView()
-        contentView.axis = .vertical
-        contentView.alignment = .center
-        contentView.distribution = .fill
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
+    override func loadView() {
+        self.view = detailView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        setupConstraint()
-    }
-    
-    private func setUI(){
+        detailView.detailViewDelegate = self
         setNavigationBar()
-        setData()
-        setViews()
-    }
-    
-    private func setupConstraint(){
-        setupScrollView()
-        setupStackView()
-        setupContentViewElement()
     }
     
     private func setNavigationBar() {
@@ -86,55 +42,12 @@ final class DetailViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
-    
-    private func setData() {
-        guard let item = koreaItem else { return }
-        itemImageView.image = UIImage(named: item.imageName)
-        descriptionLabel.text = item.description
-    }
 }
 
-extension DetailViewController {
-    private func setViews() {
-        view.backgroundColor = .white
-        view.addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addSubview(itemImageView)
-        stackView.addSubview(descriptionLabel)
-    }
-    
-    private func setupScrollView() {
-        NSLayoutConstraint.activate([
-            scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
-    }
-    
-    private func setupStackView() {
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-        ])
-    }
-    
-    private func setupContentViewElement() {
-        NSLayoutConstraint.activate([
-            itemImageView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-            itemImageView.topAnchor.constraint(equalTo: stackView.topAnchor,
-                                               constant: Constant.imageViewTopConstraint),
-            itemImageView.heightAnchor.constraint(equalToConstant: Constant.imageViewHeight),
-            descriptionLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor,
-                                                  constant: Constant.textViewTopConstraint),
-            descriptionLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor,
-                                                      constant: Constant.textViewLeadingConstraint),
-            descriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor,
-                                                       constant: Constant.textViewTrailingConstraint),
-            descriptionLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor)
-        ])
+extension DetailViewController: DetailViewDelegate {
+    func setupDataImageView(imageView: UIImageView, label: UILabel) {
+        guard let item = koreaItem else { return }
+        imageView.image = UIImage(named: item.imageName)
+        label.text = item.description
     }
 }

@@ -7,7 +7,7 @@
 import UIKit
 
 final class ExpoViewController: UIViewController {
-    enum Constant {
+    private enum Constant {
         static let nextButtonTitle = "한국의 출품작 보러가기"
         static let navigationBackButtonTitle = "메인"
     }
