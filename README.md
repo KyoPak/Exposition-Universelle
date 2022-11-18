@@ -11,9 +11,12 @@
 
 
 ## 👋 소개
-[Kyo](https://github.com/KyoPak)와 [토털이](https://github.com/tottalE)가 구현한 Exposition-universelle Step-3 입니다.
+[Kyo](https://github.com/KyoPak)와 [토털이](https://github.com/tottalE)가 구현한 Exposition-universelle App 입니다.
 만국 박람회 앱으로 expo를 소개하는 앱입니다. 
 `Decoding`, `ScrollView`, `TableView`, `Dynamic Type`를 중점적으로 학습하며 프로젝트를 진행해나갔습니다.
+
+프로젝트 종료 후, 개인적으로 Refactoring 진행중입니다!
+
 
 ## 💻 개발환경 및 라이브러리
 [![swift](https://img.shields.io/badge/swift-5.6-orange)]()
@@ -29,9 +32,23 @@
 ## 🕖 타임라인
 
 ### Step - 1 : 2022.10.17 ~ 10.18
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
 - JSON의 Decodable 모델 생성
 
+</details>
+ 
 ### Step - 2 : 2022.10.18 ~ 10.26
+ 
+<details>
+<summary> 
+펼쳐보기
+</summary>
+ 
 - 메인 화면의 `Scrollview` 생성
 - 메인 화면의 JSON 데이터 `Decoding` 및 배치
 - 한국 박람회 화면의 `TableView` 생성
@@ -40,11 +57,21 @@
 - 한국 박람회 아이템 상세 화면의 `ScrollView` 내 `Decode`된 데이터 배치
 - 리뷰에 따른 Code Refactor 
 
+</details>
+  
 ### Step - 3 : 2022.10.26 ~ 10.28
+  
+<details>
+<summary> 
+펼쳐보기
+</summary>
+  
 - AutoLayout을 적용하여 다양한 기기에 대응, 가로 화면 지원
 - Word Wrapping, Line Break 방식 도입
 - 메인 화면 Landscape Mode 제한
 - Dynamic Types를 통해 텍스트 접근성 향상
+ 
+ </details>
 
 ### Personal Code Refactoring
 - POP 적용 (2022.11.03)
