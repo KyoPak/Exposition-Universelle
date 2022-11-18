@@ -23,7 +23,7 @@ final class DetailView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
-        setUI()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -71,8 +71,8 @@ final class DetailView: UIView {
         return scrollView
     }()
 
-    private func setUI(){
-        setViews()
+    private func setupUI(){
+        setupViews()
         setupConstraint()
         detailViewDelegate?.setupDataImageView(imageView: itemImageView, label: descriptionLabel)
     }
@@ -85,7 +85,7 @@ final class DetailView: UIView {
 }
 
 extension DetailView {
-    private func setViews() {
+    private func setupViews() {
         self.backgroundColor = .white
         self.addSubview(scrollView)
         scrollView.addSubview(stackView)

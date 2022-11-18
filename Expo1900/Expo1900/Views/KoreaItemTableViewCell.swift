@@ -52,7 +52,7 @@ final class KoreaItemTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        setViews()
+        setupViews()
         setupConstraints()
     }
     
@@ -62,7 +62,7 @@ final class KoreaItemTableViewCell: UITableViewCell {
 }
 
 extension KoreaItemTableViewCell {
-    private func setViews() {
+    private func setupViews() {
         self.backgroundColor = .white
         contentView.addSubview(mainImageView)
         contentView.addSubview(stackView)
