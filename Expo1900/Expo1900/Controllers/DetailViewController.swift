@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DetailViewDelegate {
+protocol DetailViewDelegate: AnyObject {
     func setupDataImageView(imageView: UIImageView, label: UILabel)
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 final class DetailView: UIView {
-    var detailViewDelegate: DetailViewDelegate?
+     weak var detailViewDelegate: DetailViewDelegate?
         
 // 해당 방법도 가능
 //    var detailViewDelegate: DetailViewDelegate? {
