@@ -82,7 +82,8 @@
   - 불필요한 TableView StoryBoard 삭제 후 테이블뷰 관련 코드 추가
 - `DetailViewController`와 `DetailView` 분리 (2022.11.18)
   - Delegate Pattern을 사용하여 ViewController와 View를 분리
-   
+- DetailViewDelegate에 AnyObject 채택
+  - 해당 프로토콜 채택 받는 프로퍼티에 weak키워드 추가
 
 ## 🌲 파일 트리
 
