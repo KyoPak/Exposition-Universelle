@@ -14,8 +14,6 @@ protocol DetailViewDelegate: AnyObject {
 final class DetailViewController: UIViewController {
     private let koreaItem: KoreaItem?
     
-    let detailView = DetailView()
-    
     init(koreaItem: KoreaItem?) {
         self.koreaItem = koreaItem
         super.init(nibName: nil, bundle: nil)
@@ -25,13 +23,10 @@ final class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        self.view = detailView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailView.detailViewDelegate = self
+        let detailView = DetailView(delegate: self)
+        self.view = detailView
         setNavigationBar()
     }
     

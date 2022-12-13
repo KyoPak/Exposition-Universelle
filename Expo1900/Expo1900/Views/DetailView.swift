@@ -17,13 +17,11 @@ final class DetailView: UIView {
 //        }
 //    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
+    init(delegate: DetailViewDelegate) {
+        super.init(frame: .zero)
+        self.detailViewDelegate = delegate
         setupUI()
+        detailViewDelegate?.setupDataImageView(imageView: itemImageView, label: descriptionLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -74,7 +72,6 @@ final class DetailView: UIView {
     private func setupUI(){
         setupViews()
         setupConstraint()
-        detailViewDelegate?.setupDataImageView(imageView: itemImageView, label: descriptionLabel)
     }
     
     private func setupConstraint(){
